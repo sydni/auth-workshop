@@ -1,1 +1,1 @@
-# js-starter with react
+Authentication workshop
