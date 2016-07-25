@@ -4,3 +4,22 @@ body {
   background: darken(white, 10%);
   margin: 50px;
 }
+
+.facebook-btn {
+  color: blue;
+  cursor: pointer;
+}
+
+#login {
+  display: none;
+  padding: 20px;
+}
+
+#login img {
+  display: block;
+  padding-top: 20px;
+}
+
+#login .email {
+  font-weight: bold;
+}

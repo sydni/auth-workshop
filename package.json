@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node_modules/.bin/webpack-dev-server --inline --hot",
     "build": "WEBPACK_ENV=production node_modules/.bin/webpack --optimize-minimize --progress --color",
-    "deploy": "npm run build; surge -p . -d tim-js-starter.surge.sh"
+    "deploy": "npm run build; surge -p . -d cs52-workshop-5.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -46,6 +46,7 @@
     "eslint-plugin-react": "^5.2.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-facebook-login": "^3.1.0",
     "react-router": "^2.6.0"
   }
 }
