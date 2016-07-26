@@ -14,7 +14,6 @@ class App extends Component {
 
     };
   }
-
   render() {
     console.log('Printing!!');
     return (
@@ -36,10 +35,10 @@ class App extends Component {
           }}
         />
         <GoogleLogin
-          clientId="http://63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com/"
+          clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
           buttonText="Login"
           callback={(response) => {
-            console.log(response);
+
           }}
         />
       </div>
