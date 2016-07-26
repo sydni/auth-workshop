@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
+
 //
 // import Welcome from './welcome';
 
@@ -31,6 +33,13 @@ class App extends Component {
             } else {
               document.getElementById('login').style = 'display: block';
             }
+          }}
+        />
+        <GoogleLogin
+          clientId="http://63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com/"
+          buttonText="Login"
+          callback={(response) => {
+            console.log(response);
           }}
         />
       </div>
