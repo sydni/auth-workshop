@@ -11,6 +11,15 @@ Ok lets switch gears and add a google login for kicks as well!
 
 ![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
 
+Steps...etc
+
+If we need to npm install we should use this meme
+
+![boxchocolates](https://cdn.meme.am/instances/63034960.jpg)
+
+For apis:
+![apis](https://cdn.meme.am/instances/57307523.jpg)
+
 ## Google authentication:
 
 ### Step one: Get the Client ID
@@ -41,6 +50,8 @@ The Authorized redirect URI field does not require a value. Redirect URIs are no
 Press the Create button.
 
 From the resulting OAuth client dialog box, copy the Client ID, you will use it soon!! The Client ID lets your app access enabled Google APIs.
+
+![apis](https://cdn.meme.am/instances/62904902.jpg)
 
 Ok now we can add google sign in to our website! Yay!
 
