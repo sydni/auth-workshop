@@ -1,11 +1,11 @@
 Authentication workshop
 
-## Firebase Authentication
+# Firebase Authentication
 Firebase provides users with an easy to use, pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
 We'll be working with firebase in a `firebaseui.js` file. Functions from this file are exported and used in the React component file `firebaseApp.js` that is called in the `app.js` file.
 Information for this workshop is based off the Firebase's [documentation](https://firebase.google.com/docs/auth/)
 
-# Initializing Firebase and FirebaseUI
+## Initializing Firebase and FirebaseUI
 Start by creating a firebase project like you did in HW3 in the [firebase console](https://console.developers.google.com/apis).
 
 Don't forget to install firebase:
@@ -28,14 +28,14 @@ And then add the following two lines to your `<head>` in `index.html`:
 ```
 This will make your sign-in buttons look sweet.
 
-# Set up Firebase Authnetication
+## Set up Firebase Authnetication
 
 Let's set up the authentication in the console next! Go back to your [firebase console](https://console.developers.google.com/apis) and click on the Authentication tab.
-![Authentication](./imgs/)
+![Authentication](./imgs/Auth)
 The click on Sign-In Method and enable the one's you feel appropriate. Since Firebase is a Google product, enabling users to sign on via Google may be helpful.  
-![Sign-In](./imgs/)
+![Sign-In](./imgs/SignInMethod)
 
-# Prompt for Sign In
+## Prompt for Sign In
 
 Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. The widget requires a number of configs as well. Adapt and insert the following code under the `start()`.
 ```
@@ -75,4 +75,4 @@ Place this line in `firebaseApp.js` within `return()`.
 
 Running `npm start` should now prompt you with a fun sign-in widget and display some information about the signed in user.
 
-NOTE: We recommend opening `localhost:8080` in an incognito window to avoid multiple signed in accounts causing problems. 
+NOTE: We recommend opening `localhost:8080` in an incognito window to avoid multiple signed in accounts causing problems.
