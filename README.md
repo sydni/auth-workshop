@@ -208,9 +208,8 @@ Now we want to make our app do something with this login info!
 
 blah
 
-Sweet we are done!
+Cool, now that we have our google and facebook logins, let's explore authentication with firebase and our react app.
 
-![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
 
 
 # Firebase Authentication
@@ -291,3 +290,7 @@ Place this line in `firebaseApp.js` within `return()`.
 Running `npm start` should now prompt you with a fun sign-in widget and display some information about the signed in user.
 
 NOTE: We recommend opening `localhost:8080` in an incognito window to avoid multiple signed in accounts causing problems.
+
+### You are done! Woo! We hope you enjoyed this tutorial on authentication.
+
+![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
