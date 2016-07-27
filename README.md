@@ -1,16 +1,20 @@
 
-# Welcome to our Authentication workshop!
+# Welcome to our Social Integration + Authentication workshop!
 ![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
 
-Today we are going to implement a webpage that a user has to sign into to access. Like a lot of webpages, we can use google or facebook accounts for authentication. Let's start with facebook.
+Today we are going to implement a webpage that a user has to sign into to access. Like a lot of webpages, we can use Google or Facebook accounts for authentication, sometimes without putting in your password. WOWIE! Below we have workshops for Facebook Login, Google Login and Firebase Authentication.
 
-# First things first
+# Facebook
+
+We'll be showing you guys how to add a Facebook login feature using a pretty simple node module...BUT
+
+## First things first
 
 You need to fork and clone this repo duhhhhh! Go ahead, you got this.
 
 ![yougotthis](https://m.popkey.co/82d7a9/Y003o_s-200x150.gif?c=popkey-web&p=popkey&i=mondaymotivation-reactions&l=search&f=.gif)
 
-# Facebook Authentication
+## Facebook Authentication
 
 ![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
 
@@ -66,11 +70,11 @@ What are we going to render? A login button right? Ok so here is the basic struc
     appId=“yourapiid"
     autoLoad
     fields="name,email,picture"
-    callback={someCallback} 
+    callback={someCallback}
 />
 ```
 
-So it looks like we need an API ID. 
+So it looks like we need an API ID.
 
 Head over here to get your ID. (Note: need more specific instructions on this)
 
@@ -105,16 +109,16 @@ Here we already have a nice if-statement that checks whether the login was succe
 Now inside we want to greet the user. So we want to add to our html when logged in. Here’s an example of what you could say!
 
 ```
-document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
-document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
-document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
-document.getElementById('login').style = 'display: block’;
+document.getElementById('facebook').innerHTML = `Welcome, ${response.name}! `;
+document.getElementById('facebook').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
+document.getElementById('facebook').innerHTML += `<img src="${response.picture.data.url}"/>`;
+document.getElementById('facebook').style = 'display: block’;
 ```
 
 And if they weren’t logged in you would just keep the html the same, maybe keeping it as a block??? AKA put this in the else statement.
 
 ```
-document.getElementById('login').style = 'display: block';
+document.getElementById('facebook').style = 'display: block';
 ```
 
 The picture seems kinda small too so let’s change the fields attribute in our Facebook element to:
@@ -176,9 +180,11 @@ Ok now we can add google sign in to our website! Yay!
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
 
 
-## Step two: An Introduction to Google API JavaScript Client and Installing the Node-Module
+## Step two: An Introduction to Google API JavaScript Client Library and Installing the Node-Module
 
-To streamline accessing the client we'll be using the node-module react-google-client. You can find more information about it [here](https://github.com/anthonyjgrove/react-google-login). Install it with npm like you normally do:
+Google provides developers with a Google API JavaScript Client Library chock full of functions that provides access to a majority of Google's APIs. You can check out the reference docs [here](https://developers.google.com/api-client-library/) if you're interested in. NOTE: to use methods from the client library in a React component you need to add the prefix `window.gapi...`.
+
+Like Facebook Login we'll being making things a lot easier and streamline accessing the client with a node-module: react-google-login. You can find more information about it [here](https://github.com/anthonyjgrove/react-google-login). Install it with npm like you normally do:
 
 ```
 npm install --save react-google-login
@@ -190,7 +196,18 @@ We'll be adding the component into App so don't forget to import it:
 import GoogleLogin from 'react-google-login';
 ```
 
+Great Job!
+
+![great job](http://gph.is/1c7vGFY)
+
 ## Step three: Add In Callback Function and Sign-In Button
+
+The react-google-login module takes in a callback function as a prop and returns a GoogUser object to that callback. Write a function that takes in a response. In this case we called the function `onGoogleLogin(response)` but you can call it whatever you like. And don't forget to `bind(this)` the function in the constructor.
+
+In case this is confusing we left a line in the code for you to add your callback function:
+```
+\\ Write a Google callback function here
+```
 
 After we set up the callback function, we can add in the component in render() like we normally do in React:
 ```
@@ -200,6 +217,7 @@ After we set up the callback function, we can add in the component in render() l
   callback={this.onGoogleLogin}
 />
 ```
+For styling purposes put it component within the `<div id="google">` tags.
 
 Now we have a functioning login/logout feature to our react app! WOO!
 
@@ -207,7 +225,23 @@ Now we have a functioning login/logout feature to our react app! WOO!
 
 Now we want to make our app do something with this login info!
 
-blah
+The response the callback function receives is a GoogUser object. You can read through the documentation on that [here](https://developers.google.com/api-client-library/javascript/reference/referencedocs#users). We're going to grab the profile of the user with the function: `response.getBasicProfile()`. From the BasicProfile object we can get name, email, and a profile picture using `getName()`, `getEmail()`, and `getImageUrl()`. Then update the component by calling `this.setState`. Here's how we did it:
+
+```
+// What happens after someone logs in
+onGoogleLogin(response) {
+  if (response) {
+    const user = response.getBasicProfile();
+    this.setState({
+      google: true,
+      googleName: user.getName(),
+      googleEmail: user.getEmail(),
+      googleImage: user.getImageUrl(),
+    });
+  }
+}
+```
+The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button.
 
 Sweet we are done!
 

@@ -11,6 +11,7 @@ class FirebaseApp extends Component {
       signedIn: false,
     };
     this.onSignIn = this.onSignIn.bind(this);
+    this.renderFirebase = this.renderFirebase.bind(this);
   }
   componentDidMount() {
     firebaseui.start(this.onSignIn);
@@ -25,15 +26,25 @@ class FirebaseApp extends Component {
     }
   }
 
-  render() {
-    return (
-      <div id="firebase">
-        <div id="firebaseui-auth-container" />
+  renderFirebase() {
+    if (this.state.signedIn) {
+      return (
         <div id="firebase-info">
           Name: {this.state.name} <br />
           Email: {this.state.email} <br />
           Photo: <img src={this.state.photo} alt="none available" />
         </div>
+      );
+    } else {
+      return (<div />);
+    }
+  }
+
+  render() {
+    return (
+      <div id="firebase">
+        <div id="firebaseui-auth-container" />
+          {this.renderFirebase()}
       </div>
     );
   }

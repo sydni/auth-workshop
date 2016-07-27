@@ -5,21 +5,36 @@ body {
   margin: 50px;
 }
 
+ul {
+  list-style: none;
+}
+
 .facebook-btn {
   color: blue;
   cursor: pointer;
 }
 
 #login {
-  display: none;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+}
+
+#facebook {
   padding: 20px;
 }
 
-#login img {
+#facebook img {
   display: block;
   padding-top: 20px;
 }
 
-#login .email {
+#facebook .email {
   font-weight: bold;
+}
+
+#google {
+  margin: auto;
+  display: flex;
+  flex-flow: column;
 }
