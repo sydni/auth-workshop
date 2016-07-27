@@ -72,7 +72,7 @@ class App extends Component {
       <div id="login">
         <div id="facebook">
           <FacebookLogin
-            appId="1219080648156282"
+            appId="796989707105139"
             autoLoad
             scope="user_birthday"
             fields="name,email,picture.type(large)"
