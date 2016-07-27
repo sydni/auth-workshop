@@ -71,6 +71,7 @@ class App extends Component {
   }
 
   render() {
+    // Add in the FirebaseApp component, FacebookLogin, and GoogleLogin
     return (
       <div id="login">
         <div id="facebook">
@@ -85,7 +86,6 @@ class App extends Component {
         <div id="google">
           {this.renderGoogle()}
         </div>
-        <!--Put FirebaseApp component here-->
         <FirebaseApp />
       </div>
     );
