@@ -1,4 +1,3 @@
-
 # Welcome to our Social Integration + Authentication workshop!
 ![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
 
@@ -82,7 +81,6 @@ Register as a developer, it only takes a second :)
 
 ![devpic](https://media.giphy.com/media/xTiQysAAe1IB2jaV56/giphy.gif)
 
-
 Make a new web app with the name of your choice and grab that App ID
 
 Now add it into the code where we specified. What else do we need to do? We need to define our callback function, or what the website will return after the user is logged in. Facebook’s api is nice because it allows you to access some user information, so let’s use that to welcome the user when they log in!
@@ -128,11 +126,32 @@ The picture seems kinda small too so let’s change the fields attribute in our 
 fields="name,email,picture.type(large)”
 ```
 
-There we go! Ok now we are ready to test it out! Gotta npm start it up!
+There's one last thing we need to do on Facebook before we can test our new page.
+
+Head back over to https://developers.facebook.com/apps/ and click on the app you made.
+
+In settings, click add platform 
+
+![platform](imgs/addplatform.png)
+
+and select website. Then, set the Site URL field to http://localhost/
+
+![urlfield](imgs/addlocal.png)
+
+Lastly, we need to add localhost to the main settings section (towards the top of this page)
+
+![localhostpic](imgs/addlocal2.png)
+
+There we go! Now we told facebook to allow the app to run on our localhost!
+
+![victory](https://media.giphy.com/media/lnlAifQdenMxW/giphy.gif)
+
+We are ready to test it out! Gotta npm start it up!
 
 ```
 npm start
 ```
+
 
 Go to your localhost and try logging it and see what happens. Make sure to ask questions if you are having trouble, or retrace your steps in the tutorial.
 
