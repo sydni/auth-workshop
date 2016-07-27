@@ -13,9 +13,6 @@ If we need to npm install we should use this meme
 
 ![boxchocolates](https://cdn.meme.am/instances/63034960.jpg)
 
-For apis:
-![apis](https://cdn.meme.am/instances/57307523.jpg)
-
 Ok lets switch gears and add a google login for kicks as well!
 
 ![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
