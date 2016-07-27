@@ -21,8 +21,8 @@ class App extends Component {
 
   onFacebookLogin(response) {
     if (response.status !== 'not_authorized' && response.status !== 'unknown') {
+      console.log(response);
       document.getElementById('facebook').innerHTML = `Welcome, ${response.name}! `;
-      document.getElementById('facebook').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
       document.getElementById('facebook').innerHTML += `<img src="${response.picture.data.url}"/>`;
       document.getElementById('facebook').style = 'display: block';
     } else {
@@ -41,6 +41,9 @@ class App extends Component {
         googleEmail: user.getEmail(),
         googleImage: user.getImageUrl(),
       });
+      if (this.state.googleImage === '') {
+        this.state.googleImage = '/imgs/defaultProPic.jpg';
+      }
     }
   }
 
@@ -52,7 +55,7 @@ class App extends Component {
             <li>Thanks for logging in! </li>
             <li>Your Name: {this.state.googleName}</li>
             <li>Your Email: {this.state.googleEmail}</li>
-            <li>Your Photo: <img src={this.state.googleImage} alt="imgs/defaultProPic.jpg" /></li>
+            <li>Your Photo: <img src={this.state.googleImage} alt="N/A" /></li>
           </ul>
         </div>
       );
@@ -68,7 +71,7 @@ class App extends Component {
       <div id="login">
         <div id="facebook">
           <FacebookLogin
-            appId="1219080648156282"
+            appId="796989707105139"
             autoLoad
             scope="user_birthday"
             fields="name,email,picture.type(large)"
@@ -78,7 +81,7 @@ class App extends Component {
         <div id="google">
           <GoogleLogin
             clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText="LOGIN WITH GOOGLE"
             callback={this.onGoogleLogin}
           />
           {this.renderGoogle()}
