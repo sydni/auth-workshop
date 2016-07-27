@@ -67,16 +67,23 @@ What are we going to render? A login button right? Ok so here is the basic struc
 
 ```
   <FacebookLogin
-    appId=“yourapiid"
+    appId=“yourappid"
     autoLoad
     fields="name,email,picture"
     callback={someCallback}
 />
 ```
 
-So it looks like we need an API ID.
+So it looks like we need an App ID.
 
-Head over here to get your ID. (Note: need more specific instructions on this)
+Head over here to get your ID. https://developers.facebook.com/apps/
+
+Register as a developer (you're pretty legit!) it only takes a second
+
+![devpic](https://giphy.com/gifs/arg-xTiQysAAe1IB2jaV56)
+
+
+Make a new web app with the name of your choice and grab that App ID
 
 Now add it into the code where we specified. What else do we need to do? We need to define our callback function, or what the website will return after the user is logged in. Facebook’s api is nice because it allows you to access some user information, so let’s use that to welcome the user when they log in!
 
