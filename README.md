@@ -128,8 +128,7 @@ fields="name,email,picture.type(large)”
 
 There's one last thing we need to do on Facebook before we can test our new page.
 
-Head back over to https://developers.facebook.com/apps/ and click on the app you made.
-
+Head back over to https://developers.facebook.com/apps/ and click on the app you made
 In settings, click add platform 
 
 ![platform](imgs/addplatform.png)
@@ -142,9 +141,8 @@ Lastly, we need to add localhost to the main settings section (towards the top o
 
 ![localhostpic](imgs/addlocal2.png)
 
-There we go! Now we told facebook to allow the app to run on our localhost!
 
-![victory](https://media.giphy.com/media/lnlAifQdenMxW/giphy.gif)
+There we go! Now we told facebook to allow the app to run on our localhost!
 
 We are ready to test it out! Gotta npm start it up!
 
@@ -167,8 +165,6 @@ Just something to think about. :)
 
 We'll be being implementing a Google log-in feature as React component using a node-modeule.
 But so before we start, we need to go create a Google Developers Console project and client ID.
-
-_Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project) and (https://developers.google.com/identity/sign-in/web/sign-in)._
 
 First go to:
 [google's API console](https://console.developers.google.com/project/_/apiui/apis/library)
@@ -196,9 +192,6 @@ From the resulting OAuth client dialog box, copy the Client ID, you will use it 
 ![apis](https://cdn.meme.am/instances/62904902.jpg)
 
 Ok now we can add google sign in to our website! Yay!
-
-![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
-
 
 ## Step two: An Introduction to Google API JavaScript Client Library and Installing the Node-Module
 
@@ -245,7 +238,11 @@ Now we have a functioning login/logout feature to our react app! WOO!
 
 Now we want to make our app do something with this login info!
 
-The response the callback function receives is a GoogUser object. You can read through the documentation on that [here](https://developers.google.com/api-client-library/javascript/reference/referencedocs#users). We're going to grab the profile of the user with the function: `response.getBasicProfile()`. From the BasicProfile object we can get name, email, and a profile picture using `getName()`, `getEmail()`, and `getImageUrl()`. Then update the component by calling `this.setState`. Here's how we did it:
+The response the callback function receives is a GoogUser object. You can read through the documentation on that [here](https://developers.google.com/api-client-library/javascript/reference/referencedocs#users). We're going to grab the profile of the user with the function: `response.getBasicProfile()`. From the BasicProfile object we can get name, email, and a profile picture using `getName()`, `getEmail()`, and `getImageUrl()`.
+
+To switch things up, we decided to use the App's state with google authentication and rendering instead of using the documentGetID functions. You could still do it the other way, but we wanted to show a couple different directions you could take.
+
+So we want to update the component by calling `this.setState`. Here's how we did it:
 
 ```
 // What happens after someone logs in
@@ -263,9 +260,11 @@ onGoogleLogin(response) {
 ```
 The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button.
 
+Test and see how it works now! Aren't you proud?
+
+![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
+
 Cool, now that we have our google and facebook logins, let's explore authentication with firebase and our react app.
-
-
 
 # Firebase Authentication
 
