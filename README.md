@@ -14,7 +14,7 @@ You need to fork and clone this repo duhhhhh! Go ahead, you got this.
 
 ![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
 
-Well whattya know, there's a handy dandy npm module for implementing the facebook login with react. Let's intall it! (Note: do we need to do npm install?)
+Well whattya know, there's a handy dandy npm module for implementing the facebook login with react. Let's install it! (Note: do we need to do npm install?)
 
 ```
 $ npm install react react-dom react-facebook-login —save
