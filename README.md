@@ -109,7 +109,6 @@ Now inside we want to greet the user. So we want to add to our html when logged 
 
 ```
 document.getElementById('facebook').innerHTML = `Welcome, ${response.name}! `;
-document.getElementById('facebook').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
 document.getElementById('facebook').innerHTML += `<img src="${response.picture.data.url}"/>`;
 document.getElementById('facebook').style = 'display: block’;
 ```
