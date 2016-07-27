@@ -78,7 +78,7 @@ So it looks like we need an App ID.
 
 Head over here to get your ID. https://developers.facebook.com/apps/
 
-Register as a developer (you're pretty legit!) it only takes a second
+Register as a developer, it only takes a second :)
 
 ![devpic](https://media.giphy.com/media/xTiQysAAe1IB2jaV56/giphy.gif)
 
