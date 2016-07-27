@@ -117,7 +117,7 @@ document.getElementById('facebook').innerHTML += `<img src="${response.picture.d
 document.getElementById('facebook').style = 'display: block';
 ```
 
-And if they weren’t logged in you would want to still call to display block because it caches the login.
+And if they weren’t logged in you would want to still call to display block because it caches the login. So add this under the else statement.
 
 ```
 document.getElementById('facebook').style = 'display: block';
