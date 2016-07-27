@@ -80,7 +80,7 @@ Head over here to get your ID. https://developers.facebook.com/apps/
 
 Register as a developer (you're pretty legit!) it only takes a second
 
-![devpic](https://giphy.com/gifs/arg-xTiQysAAe1IB2jaV56)
+![devpic](https://media.giphy.com/media/xTiQysAAe1IB2jaV56/giphy.gif)
 
 
 Make a new web app with the name of your choice and grab that App ID
@@ -91,12 +91,6 @@ First step is to name our login function. You can call it whatever you want, but
 
 ```
 callback={this.onFacebookLogin}
-```
-
-We also want to set the scope as “user_birthday”???????
-
-```
-scope="user_birthday"
 ```
 
 Then, bind the login to this in your constructor (you should know how to do this by now) and create your function.
