@@ -1,9 +1,19 @@
 # Welcome to our Authentication workshop!
 ![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
 
-How to implement google authentication:
+Today we are going to implement a webpage that a user has to sign into to access. Like a lot of webpages, we can use google or facebook accounts for authentication. Let's start with facebook.
 
-## Step one: Get the Client ID
+![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
+
+## Facebook authentication
+
+Ok lets switch gears and add a google login for kicks as well!
+
+![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
+
+## Google authentication:
+
+### Step one: Get the Client ID
 
 Ok so before we start, we need to go create a Google Developers Console project and client ID.
 
@@ -36,7 +46,7 @@ Ok now we can add google sign in to our website! Yay!
 
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
 
-## Step two: Initialize the api
+### Step two: Initialize the api
 
 Now go to your index.html file and make sure you have the script tag to include the google api library.
 
@@ -87,3 +97,11 @@ To allow a user to sign out, you need to add a sign out button and corresponding
 Now we have a functioning login/logout feature to our react app! WOO!
 
 ![woo](https://m.popkey.co/9d0c9e/K01R6.gif)
+
+Now we want to make our app do something with this login info!
+
+blah
+
+Sweet we are done!
+
+![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
