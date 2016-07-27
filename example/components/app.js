@@ -73,7 +73,6 @@ class App extends Component {
           <FacebookLogin
             appId="796989707105139"
             autoLoad
-            scope="user_birthday"
             fields="name,email,picture.type(large)"
             callback={this.onFacebookLogin}
           />
