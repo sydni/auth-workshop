@@ -260,7 +260,32 @@ onGoogleLogin(response) {
   }
 }
 ```
-The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button.
+The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button. You can use this or make your own! Our code is below.
+
+```
+  renderGoogle() {
+    if (this.state.google) {
+      return (
+        <div>
+          <ul>
+            <li>Thanks for logging in! </li>
+            <li>Your Name: {this.state.googleName}</li>
+            <li>Your Email: {this.state.googleEmail}</li>
+            <li>Your Photo: <img src={this.state.googleImage} alt="N/A" /></li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <GoogleLogin
+          clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
+          buttonText="LOGIN WITH GOOGLE"
+          callback={this.onGoogleLogin}
+        />
+      );
+    }
+  }
+```
 
 Test and see how it works now! Aren't you proud?
 
