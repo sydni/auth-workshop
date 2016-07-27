@@ -137,11 +137,11 @@ Go to your localhost and try logging it and see what happens. Make sure to ask q
 
 Ok lets switch gears and add a google login for kicks as well!
 
+# Google Authentication:
+
 ![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
 
 Just something to think about. :)
-
-# Google Authentication:
 
 ## Step one: Get the Client ID
 
@@ -243,9 +243,8 @@ onGoogleLogin(response) {
 ```
 The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button.
 
-Sweet we are done!
+Cool, now that we have our google and facebook logins, let's explore authentication with firebase and our react app.
 
-![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
 
 
 # Firebase Authentication
@@ -331,3 +330,7 @@ Running `npm start` should now prompt you with a fun sign-in widget and display 
 ![firebase auth](imgs/FirebaseAuth.png)
 
 NOTE: We recommend opening `localhost:8080` in an incognito window to avoid multiple signed in accounts causing problems.
+
+### You are done! Woo! We hope you enjoyed this tutorial on authentication.
+
+![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
