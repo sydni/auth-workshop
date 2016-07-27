@@ -2,11 +2,21 @@
 # Welcome to our Authentication workshop!
 ![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
 
+Today we are going to implement a webpage that a user has to sign into to access. Like a lot of webpages, we can use google or facebook accounts for authentication. Let's start with facebook.
 
-# Google Log-In
+![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
+
+# Facebook Authentication
+
+Ok lets switch gears and add a google login for kicks as well!
+
+![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
+
+# Google Authentication:
+
+## Step one: Get the Client ID
 
 We'll be being implementing a Google log-in feature into a React component using a node-modeule.
-
 But so before we start, we need to go create a Google Developers Console project and client ID.
 
 _Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project) and (https://developers.google.com/identity/sign-in/web/sign-in)._
@@ -38,6 +48,7 @@ Ok now we can add google sign in to our website! Yay!
 
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
 
+
 ## Step two: An Introduction to Google API JavaScript Client and Installing the Node-Module
 
 To streamline accessing the client we'll be using the node-module react-google-client. You can find more information about it [here](https://github.com/anthonyjgrove/react-google-login). Install it with npm like you normally do:
@@ -66,6 +77,14 @@ After we set up the callback function, we can add in the component in render() l
 Now we have a functioning login/logout feature to our react app! WOO!
 
 ![woo](https://m.popkey.co/9d0c9e/K01R6.gif)
+
+Now we want to make our app do something with this login info!
+
+blah
+
+Sweet we are done!
+
+![done](https://az616578.vo.msecnd.net/files/2016/04/27/635973905059782999-786745112_marry%20poppins.gif)
 
 
 # Firebase Authentication
