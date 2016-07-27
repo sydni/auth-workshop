@@ -198,7 +198,7 @@ import GoogleLogin from 'react-google-login';
 
 Great Job!
 
-![great job](http://gph.is/1c7vGFY)
+![great job](https://media.giphy.com/media/xHMIDAy1qkzNS/giphy.gif)
 
 ## Step three: Add In Callback Function and Sign-In Button
 
@@ -249,7 +249,7 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 # Firebase Authentication
 
-![fire](http://gph.is/1jskbwn)
+![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 
 Firebase provides users with an pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
 We'll be working with firebase in a `firebaseui.js` file. Functions from this file are exported and used in the React component file `firebaseApp.js` that is called in the `app.js` file.
@@ -278,6 +278,8 @@ And then add the following two lines to your `<head>` in `index.html`:
 ```
 This will make your sign-in buttons look sweet.
 
+![sweet](https://media.giphy.com/media/4Z3DdOZRTcXPa/giphy.gif)
+
 ## Set up Firebase Authentication
 
 Let's set up the authentication in the console next! Go back to your [firebase console](https://console.developers.google.com/apis) and click on the Authentication tab.
@@ -289,7 +291,21 @@ The click on Sign-In Method and enable the one's you feel appropriate. Since Fir
 
 ## Prompt for Sign In
 
-Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. The widget requires a number of configs as well. Adapt and insert the following code under the `start()`.
+Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user. 
+
+```
+onSignIn(user) {
+  if (user) {
+    this.setState({
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoUrl,
+    });
+  }
+}
+```
+
+The widget requires a number of configs as well. Adapt and insert the following code under the `start(callback)` function.
 ```
 // FirebaseUI config.
 var uiConfig = {

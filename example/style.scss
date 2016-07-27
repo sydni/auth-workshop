@@ -1,0 +1,40 @@
+body {
+  font-family: "Roboto", sans-serif;
+  color: rgb(10%, 10%, 10%);
+  background: darken(white, 10%);
+  margin: 50px;
+}
+
+ul {
+  list-style: none;
+}
+
+.facebook-btn {
+  color: blue;
+  cursor: pointer;
+}
+
+#login {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+}
+
+#facebook {
+  padding: 20px;
+}
+
+#facebook img {
+  display: block;
+  padding-top: 20px;
+}
+
+#facebook .email {
+  font-weight: bold;
+}
+
+#google {
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+}

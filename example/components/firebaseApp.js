@@ -22,7 +22,6 @@ class FirebaseApp extends Component {
         name: user.displayName,
         email: user.email,
         photo: user.photoUrl,
-        signedIn: true,
       });
     }
   }
@@ -44,7 +43,7 @@ class FirebaseApp extends Component {
   render() {
     return (
       <div id="firebase">
-      // Put firebase box div here
+        <div id="firebaseui-auth-container" />
           {this.renderFirebase()}
       </div>
     );
