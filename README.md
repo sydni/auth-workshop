@@ -32,7 +32,9 @@ This will make your sign-in buttons look sweet.
 
 Let's set up the authentication in the console next! Go back to your [firebase console](https://console.developers.google.com/apis) and click on the Authentication tab.
 ![Authentication](imgs/Auth.png)
+
 The click on Sign-In Method and enable the one's you feel appropriate. Since Firebase is a Google product, enabling users to sign on via Google may be helpful.  
+
 ![Sign-In](imgs/SignInMethod.png)
 
 ## Prompt for Sign In
