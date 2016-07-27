@@ -22,7 +22,7 @@ Ok lets switch gears and add a google login for kicks as well!
 
 ## Step one: Get the Client ID
 
-We'll be being implementing a Google log-in feature into a React component using a node-modeule.
+We'll be being implementing a Google log-in feature as React component using a node-modeule.
 But so before we start, we need to go create a Google Developers Console project and client ID.
 
 _Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project) and (https://developers.google.com/identity/sign-in/web/sign-in)._
@@ -96,7 +96,10 @@ Sweet we are done!
 
 
 # Firebase Authentication
-Firebase provides users with an easy to use, pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
+
+![fire](http://gph.is/1jskbwn)
+
+Firebase provides users with an pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
 We'll be working with firebase in a `firebaseui.js` file. Functions from this file are exported and used in the React component file `firebaseApp.js` that is called in the `app.js` file.
 Information for this workshop is based off the Firebase's [documentation](https://firebase.google.com/docs/auth/)
 
@@ -123,7 +126,7 @@ And then add the following two lines to your `<head>` in `index.html`:
 ```
 This will make your sign-in buttons look sweet.
 
-## Set up Firebase Authnetication
+## Set up Firebase Authentication
 
 Let's set up the authentication in the console next! Go back to your [firebase console](https://console.developers.google.com/apis) and click on the Authentication tab.
 ![Authentication](imgs/Auth.png)
@@ -171,5 +174,7 @@ Notice how the ui.start method has a `#firebaseui-auth-container`? This indicate
 Place this line in `firebaseApp.js` within `return()`.
 
 Running `npm start` should now prompt you with a fun sign-in widget and display some information about the signed in user.
+
+![firebase auth](imgs/FirebaseAuth.png)
 
 NOTE: We recommend opening `localhost:8080` in an incognito window to avoid multiple signed in accounts causing problems.
