@@ -23,7 +23,6 @@ class App extends Component {
     if (response.status !== 'not_authorized' && response.status !== 'unknown') {
       console.log(response);
       document.getElementById('facebook').innerHTML = `Welcome, ${response.name}! `;
-      document.getElementById('facebook').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
       document.getElementById('facebook').innerHTML += `<img src="${response.picture.data.url}"/>`;
       document.getElementById('facebook').style = 'display: block';
     } else {
