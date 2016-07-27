@@ -249,6 +249,8 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 # Firebase Authentication
 
+For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`. 
+
 ![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 
 Firebase provides users with an pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
@@ -267,7 +269,7 @@ To use firebase for authentication you need to first initialize firebase and the
 
 Grab the configs and `initializeApp` line and put them in the top of the `firebaseui.js` file. Like in HW3 this file will contain our functions that access firebase.
 
-Initialize FirebaseUI by placing this line in `firebase.js`:
+Initialize FirebaseUI by placing this line in `firebaseui.js`:
 ```
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 ```
@@ -291,7 +293,7 @@ The click on Sign-In Method and enable the one's you feel appropriate. Since Fir
 
 ## Prompt for Sign In
 
-Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user. 
+Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user.
 
 ```
 onSignIn(user) {

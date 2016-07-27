@@ -44,7 +44,7 @@ class FirebaseApp extends Component {
   render() {
     return (
       <div id="firebase">
-      // Put firebase box div here
+       <!---Put firebase box div here--->
           {this.renderFirebase()}
       </div>
     );
