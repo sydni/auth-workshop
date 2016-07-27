@@ -250,7 +250,7 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 # Firebase Authentication
 
-For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`. 
+For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`. To make it show up add the component in `app.js` with `<FirebaseApp />`
 
 ![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 

@@ -10,9 +10,3 @@ export function start(callback) {
   // Put ui.start... here:
 
 }
-
-export function getUser(callback) {
-  firebase.auth().onAuthStateChanged((user) => {
-    callback(user);
-  });
-}
