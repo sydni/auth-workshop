@@ -11,7 +11,26 @@ class App extends Component {
     this.state = {
 
     };
+    this.onGoogleLogin = this.onGoogleLogin.bind(this);
+    this.onFacebookLogin = this.onFacebookLogin.bind(this);
   }
+
+  onFacebookLogin(response) {
+    if (response.status !== 'not_authorized' && response.status !== 'unknown') {
+      document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
+      document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
+      document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
+      document.getElementById('login').style = 'display: block';
+    } else {
+      document.getElementById('login').style = 'display: block';
+    }
+  }
+
+  // What happens after someone logs in
+  onGoogleLogin(response) {
+    console.log(response);
+  }
+
   render() {
     console.log('Printing!!');
     return (
@@ -21,23 +40,12 @@ class App extends Component {
           autoLoad
           scope="user_birthday"
           fields="name,email,picture.type(large)"
-          callback={(response) => {
-            if (response.status !== 'not_authorized' && response.status !== 'unknown') {
-              document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
-              document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
-              document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
-              document.getElementById('login').style = 'display: block';
-            } else {
-              document.getElementById('login').style = 'display: block';
-            }
-          }}
+          callback={this.onFacebookLogin}
         />
         <GoogleLogin
           clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
           buttonText="Login"
-          callback={(response) => {
-
-          }}
+          callback={this.onGoogleLogin}
         />
         <FirebaseApp />
       </div>

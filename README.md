@@ -1,4 +1,73 @@
 
+# Welcome to our Authentication workshop!
+![soexcited](https://admin.mashable.com/wp-content//uploads/2013/07/Friends1.gif)
+
+
+# Google Log-In
+
+We'll be being implementing a Google log-in feature into a React component using a node-modeule.
+
+But so before we start, we need to go create a Google Developers Console project and client ID.
+
+_Instructions gathered from (https://developers.google.com/identity/sign-in/web/devconsole-project) and (https://developers.google.com/identity/sign-in/web/sign-in)._
+
+First go to:
+[google's API console](https://console.developers.google.com/project/_/apiui/apis/library)
+
+and create a new project.
+
+In the sidebar under "API Manager", select Credentials, then select the OAuth consent screen tab.
+Choose an Email Address, specify a Product Name, and press Save.
+
+In the Credentials tab, select the New credentials drop-down list, and choose OAuth client ID.
+
+Under Application type, select Web application.
+Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.
+In the Authorized JavaScript origins field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. You cannot use wildcards. In the example below, the second URL could be a production URL.
+
+http://localhost:8080
+https://myproductionurl.example.com
+
+The Authorized redirect URI field does not require a value. Redirect URIs are not used with JavaScript APIs.
+
+Press the Create button.
+
+From the resulting OAuth client dialog box, copy the Client ID, you will use it soon!! The Client ID lets your app access enabled Google APIs.
+
+Ok now we can add google sign in to our website! Yay!
+
+![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
+
+## Step two: An Introduction to Google API JavaScript Client and Installing the Node-Module
+
+To streamline accessing the client we'll be using the node-module react-google-client. You can find more information about it [here](https://github.com/anthonyjgrove/react-google-login). Install it with npm like you normally do:
+
+```
+npm install --save react-google-login
+```
+
+This module provides the code for a google login React component, SWEET!
+We'll be adding the component into App so don't forget to import it:
+```
+import GoogleLogin from 'react-google-login';
+```
+
+## Step three: Add In Callback Function and Sign-In Button
+
+After we set up the callback function, we can add in the component in render() like we normally do in React:
+```
+<GoogleLogin
+  clientId="YOUR-CLIENT-ID"
+  buttonText="BUTTON-TEXT"
+  callback={this.onGoogleLogin}
+/>
+```
+
+Now we have a functioning login/logout feature to our react app! WOO!
+
+![woo](https://m.popkey.co/9d0c9e/K01R6.gif)
+
+
 # Firebase Authentication
 Firebase provides users with an easy to use, pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
 We'll be working with firebase in a `firebaseui.js` file. Functions from this file are exported and used in the React component file `firebaseApp.js` that is called in the `app.js` file.
