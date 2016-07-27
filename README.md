@@ -128,7 +128,8 @@ fields="name,email,picture.type(large)”
 
 There's one last thing we need to do on Facebook before we can test our new page.
 
-Head back over to https://developers.facebook.com/apps/ and click on the app you made
+Head back over to https://developers.facebook.com/apps/ and click on the app you made.
+
 In settings, click add platform 
 
 ![platform](imgs/addplatform.png)
