@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
-  background: darken(white, 10%);
+  background: white;
   margin: 50px;
 }
 
@@ -16,8 +16,9 @@ ul {
 
 #login {
   display: flex;
-  justify-content: center;
   flex-flow: column;
+  text-align: center;
+  padding-top: 200px;
 }
 
 #facebook {
@@ -34,7 +35,7 @@ ul {
 }
 
 #google {
-  margin: auto;
   display: flex;
-  flex-flow: column;
+  font-weight: bold;
+  justify-content: center;
 }
