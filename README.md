@@ -1,4 +1,3 @@
-Authentication workshop
 
 # Firebase Authentication
 Firebase provides users with an easy to use, pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
