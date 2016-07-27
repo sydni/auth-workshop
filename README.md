@@ -141,8 +141,9 @@ Lastly, we need to add localhost to the main settings section (towards the top o
 
 ![localhostpic](imgs/addlocal2.png)
 
-
 There we go! Now we told facebook to allow the app to run on our localhost!
+
+![victory](https://media.giphy.com/media/lnlAifQdenMxW/giphy.gif)
 
 We are ready to test it out! Gotta npm start it up!
 
