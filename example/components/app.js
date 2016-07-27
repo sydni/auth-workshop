@@ -61,7 +61,11 @@ class App extends Component {
       );
     } else {
       return (
-        <div />
+        <GoogleLogin
+          clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
+          buttonText="LOGIN WITH GOOGLE"
+          callback={this.onGoogleLogin}
+        />
       );
     }
   }
@@ -79,11 +83,6 @@ class App extends Component {
           />
         </div>
         <div id="google">
-          <GoogleLogin
-            clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
-            buttonText="LOGIN WITH GOOGLE"
-            callback={this.onGoogleLogin}
-          />
           {this.renderGoogle()}
         </div>
         <FirebaseApp />

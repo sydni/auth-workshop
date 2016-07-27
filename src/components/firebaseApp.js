@@ -37,12 +37,12 @@ class FirebaseApp extends Component {
         </div>
       );
     } else {
+      // Put in the firebase div tag
       return (<div />);
     }
   }
 
   render() {
-    // Put in the firebase div tag
     return (
       <div id="firebase">
           {this.renderFirebase()}
