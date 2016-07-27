@@ -133,11 +133,11 @@ Go to your localhost and try logging it and see what happens. Make sure to ask q
 
 Ok lets switch gears and add a google login for kicks as well!
 
+# Google Authentication:
+
 ![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
 
 Just something to think about. :)
-
-# Google Authentication:
 
 ## Step one: Get the Client ID
 
@@ -174,7 +174,6 @@ From the resulting OAuth client dialog box, copy the Client ID, you will use it 
 Ok now we can add google sign in to our website! Yay!
 
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
-
 
 ## Step two: An Introduction to Google API JavaScript Client and Installing the Node-Module
 
