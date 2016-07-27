@@ -7,10 +7,6 @@ Today we are going to implement a webpage that a user has to sign into to access
 
 ## Facebook authentication
 
-Ok lets switch gears and add a google login for kicks as well!
-
-![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
-
 Steps...etc
 
 If we need to npm install we should use this meme
@@ -19,6 +15,10 @@ If we need to npm install we should use this meme
 
 For apis:
 ![apis](https://cdn.meme.am/instances/57307523.jpg)
+
+Ok lets switch gears and add a google login for kicks as well!
+
+![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
 
 ## Google authentication:
 
