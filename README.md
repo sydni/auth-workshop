@@ -4,15 +4,126 @@
 
 Today we are going to implement a webpage that a user has to sign into to access. Like a lot of webpages, we can use google or facebook accounts for authentication. Let's start with facebook.
 
-![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
+# First things first
+
+You need to fork and clone this repo duhhhhh! Go ahead, you got this.
+
+![yougotthis](https://m.popkey.co/82d7a9/Y003o_s-200x150.gif?c=popkey-web&p=popkey&i=mondaymotivation-reactions&l=search&f=.gif)
 
 # Facebook Authentication
 
-Steps...etc
+![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
 
-If we need to npm install we should use this meme
+Well whattya know, there's a handy dandy npm module for implementing the facebook login with react. Let's intall it! (Note: do we need to do npm install?)
+
+```
+$ npm install react react-dom react-facebook-login —save
+```
 
 ![boxchocolates](https://cdn.meme.am/instances/63034960.jpg)
+
+Ok ok I'll take a break from the memes for a bit while we get this set up :)
+
+Let’s start with our app file. Currently you can see we have a basic structure there.
+
+```
+import React, { Component } from 'react';
+
+// example class based component (smart component)
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+
+  }
+
+
+  render() {
+    return (
+      <div id="login">
+      </div>
+    );
+  }
+}
+
+export default App;
+
+```
+
+Now we need to import our react Facebook login at the top of our file.
+
+```
+import FacebookLogin from 'react-facebook-login';
+```
+
+What are we going to render? A login button right? Ok so here is the basic structure of the Facebook login element based off of the NPM documentation for that module. You want to put this inside the current login div.
+
+```
+  <FacebookLogin
+    appId=“yourapiid"
+    autoLoad
+    fields="name,email,picture"
+    callback={someCallback} 
+/>
+```
+
+So it looks like we need an API ID. 
+
+Head over here to get your ID. (Note: need more specific instructions on this)
+
+Now add it into the code where we specified. What else do we need to do? We need to define our callback function, or what the website will return after the user is logged in. Facebook’s api is nice because it allows you to access some user information, so let’s use that to welcome the user when they log in!
+
+First step is to name our login function. You can call it whatever you want, but we gave it the creative title onFacebookLogin. So inside the callback curly braces add the function name.
+
+```
+callback={this.onFacebookLogin}
+```
+
+We also want to set the scope as “user_birthday”???????
+
+```
+scope="user_birthday"
+```
+
+Then, bind the login to this in your constructor (you should know how to do this by now) and create your function.
+
+```
+onFacebookLogin(response) {
+  if (response.status !== ‘not_authorized’ && response.status !== ‘unknown’){
+
+  } else {
+
+  }
+}
+```
+
+Here we already have a nice if-statement that checks whether the login was successful or not yay!
+
+Now inside we want to greet the user. So we want to add to our html when logged in. Here’s an example of what you could say!
+
+```
+      document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
+      document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
+      document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
+      document.getElementById('login').style = 'display: block’;
+```
+
+And if they weren’t logged in you would just keep the html the same, maybe keeping it as a block??? AKA put this in the else statement.
+
+```
+document.getElementById('login').style = 'display: block';
+```
+
+The picture seems kinda small too so let’s change the fields attribute in our Facebook element to:
+
+```
+fields="name,email,picture.type(large)”
+```
+
+There we go! Ok now we are ready to test it out! Try logging it and see what happens. Make sure to ask questions if you are having trouble, or retrace your steps in the tutorial.
 
 Ok lets switch gears and add a google login for kicks as well!
 
