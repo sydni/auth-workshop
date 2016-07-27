@@ -52,7 +52,7 @@ class App extends Component {
             <li>Thanks for logging in! </li>
             <li>Your Name: {this.state.googleName}</li>
             <li>Your Email: {this.state.googleEmail}</li>
-            <li>Your Photo: <img src={this.state.googleImage} alt="imgs/defaultProPic.jpg" /></li>
+            <li>Your Photo: <img src={this.state.googleImage} alt="\\imgs/defaultProPic.jpg" /></li>
           </ul>
         </div>
       );
