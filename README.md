@@ -105,10 +105,10 @@ Here we already have a nice if-statement that checks whether the login was succe
 Now inside we want to greet the user. So we want to add to our html when logged in. Here’s an example of what you could say!
 
 ```
-      document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
-      document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
-      document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
-      document.getElementById('login').style = 'display: block’;
+document.getElementById('login').innerHTML = `Welcome, ${response.name}! `;
+document.getElementById('login').innerHTML += `Your email is <span class="email">${response.email}</span>.`;
+document.getElementById('login').innerHTML += `<img src="${response.picture.data.url}"/>`;
+document.getElementById('login').style = 'display: block’;
 ```
 
 And if they weren’t logged in you would just keep the html the same, maybe keeping it as a block??? AKA put this in the else statement.
@@ -123,11 +123,19 @@ The picture seems kinda small too so let’s change the fields attribute in our 
 fields="name,email,picture.type(large)”
 ```
 
-There we go! Ok now we are ready to test it out! Try logging it and see what happens. Make sure to ask questions if you are having trouble, or retrace your steps in the tutorial.
+There we go! Ok now we are ready to test it out! Gotta npm start it up!
+
+```
+npm start
+```
+
+Go to your localhost and try logging it and see what happens. Make sure to ask questions if you are having trouble, or retrace your steps in the tutorial.
 
 Ok lets switch gears and add a google login for kicks as well!
 
 ![google](http://weknowmemes.com/wp-content/uploads/2013/07/what-if-one-day-google-was-deleted.png)
+
+Just something to think about. :)
 
 # Google Authentication:
 
