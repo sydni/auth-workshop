@@ -347,6 +347,15 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 ![sweet](https://media.giphy.com/media/4Z3DdOZRTcXPa/giphy.gif)
 
+Then add the following two lines to `<head>` in `index.html`:
+
+```
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.css" />
+<script src="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script>
+```
+
+These provide styling and a script for firebase ui and authentication. 
+
 ## Set up Firebase Authentication
 
 Let's set up the authentication in the console next! Go back to your [firebase console](https://console.firebase.google.com) and click on the Authentication tab.
@@ -355,6 +364,7 @@ Let's set up the authentication in the console next! Go back to your [firebase c
 Then click on Sign-In Method and enable a few. Since Firebase is a Google product, enabling users to sign on via Google doesn't require any other information.  
 
 ![Sign-In](imgs/SignInMethod.png)
+
 
 ## Prompt for Sign In
 
