@@ -17,7 +17,7 @@ You need to fork and clone this repo duhhhhh! Go ahead, you got this.
 
 ![officepic](http://wersm.com/wp-content/uploads/2015/10/wersm-john-office-costume.jpg)
 
-Well whattya know, there's a handy dandy npm module for implementing the facebook login with react. Let's install it! (Note: do we need to do npm install?)
+Well whattya know, there's a handy dandy npm module for implementing the facebook login with react. Let's install it!
 
 ```
 $ npm install react react-dom react-facebook-login —save
@@ -27,7 +27,7 @@ $ npm install react react-dom react-facebook-login —save
 
 Ok ok I'll take a break from the memes for a bit while we get this set up :)
 
-Let’s start with our app file. Currently you can see we have a basic structure there.
+Let’s start with our app file in the src/components directory. Currently you can see we have a basic structure there.
 
 ```
 import React, { Component } from 'react';
@@ -62,15 +62,17 @@ Now we need to import our react Facebook login at the top of our file.
 import FacebookLogin from 'react-facebook-login';
 ```
 
-What are we going to render? A login button right? Ok so here is the basic structure of the Facebook login element based off of the NPM documentation for that module. You want to put this inside the current login div.
+What are we going to render? A login button right? Ok so here is the basic structure of the Facebook login element based off of the NPM documentation for that module. You want to put this nested inside the current login div.
 
 ```
+<div id="facebook">
   <FacebookLogin
-    appId=“yourappid"
+    appId="yourappid"
     autoLoad
     fields="name,email,picture"
     callback={someCallback}
-/>
+  />
+</div>
 ```
 
 So it looks like we need an App ID.
@@ -81,9 +83,9 @@ Register as a developer, it only takes a second :)
 
 ![devpic](https://media.giphy.com/media/xTiQysAAe1IB2jaV56/giphy.gif)
 
-Make a new web app with the name of your choice and grab that App ID
+Make a new web app with the name of your choice and grab that App ID.
 
-Now add it into the code where we specified. What else do we need to do? We need to define our callback function, or what the website will return after the user is logged in. Facebook’s api is nice because it allows you to access some user information, so let’s use that to welcome the user when they log in!
+Now add it into the code where we specified in the FaceBookLogin component. What else do we need to do? We need to define our callback function, or what the website will return after the user is logged in. Facebook’s api is nice because it allows you to access some user information, so let’s use that to welcome the user when they log in!
 
 First step is to name our login function. You can call it whatever you want, but we gave it the creative title onFacebookLogin. So inside the callback curly braces add the function name.
 
@@ -91,11 +93,13 @@ First step is to name our login function. You can call it whatever you want, but
 callback={this.onFacebookLogin}
 ```
 
-Then, bind the login to this in your constructor (you should know how to do this by now) and create your function.
+Then, make sure to bind the function to this in your constructor (you should know how to do this by now). 
+
+And also you need to define your function:
 
 ```
 onFacebookLogin(response) {
-  if (response.status !== ‘not_authorized’ && response.status !== ‘unknown’){
+  if (response.status !== 'not_authorized' && response.status !== 'unknown'){
 
   } else {
 
@@ -110,10 +114,10 @@ Now inside we want to greet the user. So we want to add to our html when logged 
 ```
 document.getElementById('facebook').innerHTML = `Welcome, ${response.name}! `;
 document.getElementById('facebook').innerHTML += `<img src="${response.picture.data.url}"/>`;
-document.getElementById('facebook').style = 'display: block’;
+document.getElementById('facebook').style = 'display: block';
 ```
 
-And if they weren’t logged in you would just keep the html the same, maybe keeping it as a block??? AKA put this in the else statement.
+And if they weren’t logged in you would want to still call to display block because it caches the login.
 
 ```
 document.getElementById('facebook').style = 'display: block';
@@ -122,7 +126,7 @@ document.getElementById('facebook').style = 'display: block';
 The picture seems kinda small too so let’s change the fields attribute in our Facebook element to:
 
 ```
-fields="name,email,picture.type(large)”
+fields="name,email,picture.type(large)"
 ```
 
 There's one last thing we need to do on Facebook before we can test our new page.
@@ -141,6 +145,7 @@ Lastly, we need to add localhost to the main settings section (towards the top o
 
 ![localhostpic](imgs/addlocal2.png)
 
+Make sure you click to save your settings.
 
 There we go! Now we told facebook to allow the app to run on our localhost!
 
@@ -149,7 +154,7 @@ There we go! Now we told facebook to allow the app to run on our localhost!
 We are ready to test it out! Gotta npm start it up!
 
 ```
-npm start
+$ npm start
 ```
 
 
@@ -176,20 +181,21 @@ and create a new project.
 In the sidebar under "API Manager", select Credentials, then select the OAuth consent screen tab.
 Choose an Email Address, specify a Product Name, and press Save.
 
-In the Credentials tab, select the New credentials drop-down list, and choose OAuth client ID.
+In the Credentials tab, select the Create credentials drop-down list, and choose OAuth client ID.
 
 Under Application type, select Web application.
 Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.
 In the Authorized JavaScript origins field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. You cannot use wildcards. In the example below, the second URL could be a production URL.
 
 http://localhost:8080
+
 https://myproductionurl.example.com
 
 The Authorized redirect URI field does not require a value. Redirect URIs are not used with JavaScript APIs.
 
 Press the Create button.
 
-From the resulting OAuth client dialog box, copy the Client ID, you will use it soon!! The Client ID lets your app access enabled Google APIs.
+From the resulting OAuth client dialog box, make sure you write down the Client ID, you will use it soon!! The Client ID lets your app access enabled Google APIs.
 
 ![apis](https://cdn.meme.am/instances/62904902.jpg)
 
@@ -202,7 +208,7 @@ Google provides developers with a Google API JavaScript Client Library chock ful
 Like Facebook Login we'll being making things a lot easier and streamline accessing the client with a node-module: react-google-login. You can find more information about it [here](https://github.com/anthonyjgrove/react-google-login). Install it with npm like you normally do:
 
 ```
-npm install --save react-google-login
+$ npm install --save react-google-login
 ```
 
 This module provides the code for a google login React component, SWEET!
@@ -217,34 +223,26 @@ Great Job!
 
 ## Step three: Add In Callback Function and Sign-In Button
 
-The react-google-login module takes in a callback function as a prop and returns a GoogUser object to that callback. Write a function that takes in a response. In this case we called the function `onGoogleLogin(response)` but you can call it whatever you like. And don't forget to `bind(this)` the function in the constructor.
+To switch things up, we decided to use the App's state with google authentication and making a separate render function instead of using the document.getElementById functions. You could still do it the other way, but we wanted to show a couple different directions you could take.
 
-In case this is confusing we left a line in the code for you to add your callback function:
+We first need to establish the baseline state of the app in the constructor.
+
 ```
-\\ Write a Google callback function here
+this.state = {
+  google: false,
+  googleName: '',
+  googleEmail: '',
+  googleImage: '',
+}
 ```
 
-After we set up the callback function, we can add in the component in render() like we normally do in React:
-```
-<GoogleLogin
-  clientId="YOUR-CLIENT-ID"
-  buttonText="BUTTON-TEXT"
-  callback={this.onGoogleLogin}
-/>
-```
-For styling purposes put it component within the `<div id="google">` tags.
+The react-google-login module takes in a callback function as a prop and returns a GoogUser object to that callback as a response. You can read through the documentation on that [here](https://developers.google.com/api-client-library/javascript/reference/referencedocs#users). We're going to grab the profile of the user with the function: `response.getBasicProfile()`. From the BasicProfile object we can get name, email, and a profile picture using `getName()`, `getEmail()`, and `getImageUrl()`. 
 
-Now we have a functioning login/logout feature to our react app! WOO!
+In this case we called the function `onGoogleLogin(response)` but you can call it whatever you like. 
 
-![woo](https://m.popkey.co/9d0c9e/K01R6.gif)
+We also want update the component by calling `this.setState` in our response function. 
 
-Now we want to make our app do something with this login info!
-
-The response the callback function receives is a GoogUser object. You can read through the documentation on that [here](https://developers.google.com/api-client-library/javascript/reference/referencedocs#users). We're going to grab the profile of the user with the function: `response.getBasicProfile()`. From the BasicProfile object we can get name, email, and a profile picture using `getName()`, `getEmail()`, and `getImageUrl()`.
-
-To switch things up, we decided to use the App's state with google authentication and rendering instead of using the documentGetID functions. You could still do it the other way, but we wanted to show a couple different directions you could take.
-
-So we want to update the component by calling `this.setState`. Here's how we did it:
+Here's how we wrote it:
 
 ```
 // What happens after someone logs in
@@ -260,7 +258,12 @@ onGoogleLogin(response) {
   }
 }
 ```
-The sample for this workshop has a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button. You can use this or make your own! Our code is below.
+
+And don't forget to `bind(this)` the function in the constructor.
+
+After we set up the callback function, we need add in the component in render() like we normally do in React.
+
+With our specific approach using the app's state, we need a `renderGoogle()` function that displays user information if a Google User is signed in though the log in button. You can use this or make your own! Our code is below.
 
 ```
   renderGoogle() {
@@ -278,7 +281,7 @@ The sample for this workshop has a `renderGoogle()` function that displays user 
     } else {
       return (
         <GoogleLogin
-          clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
+          clientId="YOUR-CLIENT-ID"
           buttonText="LOGIN WITH GOOGLE"
           callback={this.onGoogleLogin}
         />
@@ -287,7 +290,21 @@ The sample for this workshop has a `renderGoogle()` function that displays user 
   }
 ```
 
-Test and see how it works now! Aren't you proud?
+You'll want to add your personal id. And don't forget to bind this function like usual in the constructor!
+
+With this separate renderGoogle function, we now would want to call it in the main render function of the app. For styling purposes we added the function call within the `<div id="google">` tags.
+
+```
+<div id="google">
+  {this.renderGoogle()}
+</div>
+```
+
+Now we have a functioning login/logout feature to our react app! WOO!
+
+Test and see how it works now! Don't worry if your picture doesn't come up, that just means you don't have a google profile pic.
+
+Aren't you proud?
 
 ![yay](https://m.popkey.co/9b305c/y6wJ7.gif)
 
@@ -295,51 +312,51 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 # Firebase Authentication
 
-For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`. To make it show up add the component in `app.js` with `<FirebaseApp />`
+For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`. 
+
+To make it show up add the component `<FirebaseApp />` after the facebook and google divs within the login div of the render function in `app.js`.
 
 ![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 
 Firebase provides users with an pre-styled auth solution that also allows developers to manage their users. This portion of the workshop will show you how to incorporate firebase authentication in a React component.
+
 We'll be working with firebase in a `firebaseui.js` file. Functions from this file are exported and used in the React component file `firebaseApp.js` that is called in the `app.js` file.
+
 Information for this workshop is based off the Firebase's [documentation](https://firebase.google.com/docs/auth/)
 
 ## Initializing Firebase and FirebaseUI
-Start by creating a firebase project like you did in HW3 in the [firebase console](https://console.developers.google.com/apis).
 
-Don't forget to install firebase:
+First things first, install firebase. 
+
 ```
 npm install --save firebase
 ```
 
+Next, create a firebase project like you did in HW3 in the [firebase console](https://console.firebase.google.com).
+
 To use firebase for authentication you need to first initialize firebase and then initialize FirebaseUI.
 
-Grab the configs and `initializeApp` line and put them in the top of the `firebaseui.js` file. Like in HW3 this file will contain our functions that access firebase.
+Grab the configs and `initializeApp` line and put them in the top of the `firebaseui.js` file under `// Initialize Firebase with its configs here`. Like in HW3 this file will contain our functions that access firebase.
 
 Initialize FirebaseUI by placing this line in `firebaseui.js`:
 ```
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
 ```
-And then add the following two lines to your `<head>` in `index.html`:
-```
-<script src="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.css" />
-```
-This will make your sign-in buttons look sweet.
 
 ![sweet](https://media.giphy.com/media/4Z3DdOZRTcXPa/giphy.gif)
 
 ## Set up Firebase Authentication
 
-Let's set up the authentication in the console next! Go back to your [firebase console](https://console.developers.google.com/apis) and click on the Authentication tab.
+Let's set up the authentication in the console next! Go back to your [firebase console](https://console.firebase.google.com) and click on the Authentication tab.
 ![Authentication](imgs/Auth.png)
 
-The click on Sign-In Method and enable the one's you feel appropriate. Since Firebase is a Google product, enabling users to sign on via Google may be helpful.  
+The click on Sign-In Method and enable the ones you feel are appropriate. Since Firebase is a Google product, enabling users to sign on via Google may be helpful.  
 
 ![Sign-In](imgs/SignInMethod.png)
 
 ## Prompt for Sign In
 
-Scan through `firebaseui.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user.
+Scan through `firebaseApp.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user.
 
 ```
 onSignIn(user) {
@@ -356,7 +373,7 @@ onSignIn(user) {
 The widget requires a number of configs as well. Adapt and insert the following code under the `start(callback)` function.
 ```
 // FirebaseUI config.
-var uiConfig = {
+const uiConfig = {
 //  'signInSuccessUrl': '', // Provides a redirect URL after signing in
   'signInOptions': [
     // Leave the lines as is for the providers you want to offer your users.
