@@ -78,7 +78,7 @@ class App extends Component {
         <div id="google">
           <GoogleLogin
             clientId="63478560666-m1i4mi095m2ijn3mattc3ht3rncrmr3j.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText="LOGIN WITH GOOGLE"
             callback={this.onGoogleLogin}
           />
           {this.renderGoogle()}
