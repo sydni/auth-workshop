@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-
-//
-// import Welcome from './welcome';
+import FirebaseApp from './firebaseApp';
 
 // example class based component (smart component)
 class App extends Component {
@@ -41,6 +39,7 @@ class App extends Component {
 
           }}
         />
+        <FirebaseApp />
       </div>
     );
   }
