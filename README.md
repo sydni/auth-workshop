@@ -336,7 +336,7 @@ Next, create a firebase project like you did in HW3 in the [firebase console](ht
 
 To use firebase for authentication you need to first initialize firebase and then initialize FirebaseUI (user interface stuff)
 
-To initialize firebase, do exactly what you did at the start of HW3, beginning with getting code from the settings in your project. [Here's](https://console.firebase.google.com) a link to you console.
+To initialize firebase, do exactly what you did at the start of HW3, beginning with getting code from the settings in your project. [Here's](https://console.firebase.google.com) a link to your console.
 
 Grab the config options and `initializeApp` line and put them in the top of the `firebaseui.js` file under `// Initialize Firebase with its configs here`. Like in HW3 this file will contain our functions that access firebase.
 
@@ -393,7 +393,7 @@ const uiConfig = {
   },
 };
 ```
-The `signInOptions` parameter lists what Sign-In options will show up in your widget. You should leave them ones that you enabled in the Firebase Authentication portion of the workshop.
+The `signInOptions` parameter lists what Sign-In options will show up in your widget. You should leave the ones that you enabled in the Firebase Authentication portion of the workshop.
 
 Currently the only `callbacks` firebase-ui-auth supports is `signInSuccess` that requires a function that either returns true or false and provides a `currentUser` parameter. We're going to send `currentUser` to a callback function defined somewhere else. We'll get to that in a sec.
 
