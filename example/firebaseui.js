@@ -10,7 +10,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// Initialize the FirebaseUI Widget using Firebase here
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 
 export function start(callback) {
@@ -38,8 +38,7 @@ export function start(callback) {
   // Put ui.start... here:
   // The start method will wait until the DOM is loaded.
 // Acts on the <div id="firebaseui-auth-container" /> tag
-ui.start('#firebaseui-auth-container', uiConfig);
-
+  ui.start('#firebaseui-auth-container', uiConfig);
 }
 
 export function getUser(callback) {

@@ -312,9 +312,9 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 # Firebase Authentication
 
-For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. We're going show all our work in a `FirebaseApp` component. The outline of this component is in `firebaseApp.js`.
+For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. The outline of this component is in `firebaseApp.js`. Like in HW3 we'll work with firebase in a separate file: `firebaseui.js`.
 
-To make it show up add the component `<FirebaseApp />` after the facebook and google divs within the login div of the render function in `app.js`.
+In `app.js` to make the content the FirebaseApp renders appear place the tag `<FirebaseApp />` after the facebook and google tags in the render function.
 
 ![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 
@@ -334,7 +334,7 @@ npm install --save firebase
 
 Next, create a firebase project like you did in HW3 in the [firebase console](https://console.firebase.google.com).
 
-To use firebase for authentication you need to first initialize firebase and then initialize FirebaseUI
+To use firebase for authentication you need to first initialize firebase and then initialize FirebaseUI (user interface stuff)
 
 To initialize firebase, do exactly what you did at the start of HW3, beginning with getting code from the settings in your project. [Here's](https://console.firebase.google.com) a link to you console.
 
@@ -342,7 +342,7 @@ Grab the config options and `initializeApp` line and put them in the top of the 
 
 Initialize FirebaseUI by placing this line in `firebaseui.js`:
 ```
-const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const ui = new window.firebaseui.auth.AuthUI(firebase.auth());
 ```
 
 ![sweet](https://media.giphy.com/media/4Z3DdOZRTcXPa/giphy.gif)
@@ -354,34 +354,24 @@ Then add the following two lines to `<head>` in `index.html`:
 <script src="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script>
 ```
 
-These provide styling and a script for firebase ui and authentication. 
+These provide styling and a script for firebase authentication. Don't worry if you get a `firebaseui` doesn't exist error. It's in the script we provided in the html.
 
 ## Set up Firebase Authentication
 
-Let's set up the authentication in the console next! Go back to your [firebase console](https://console.firebase.google.com) and click on the Authentication tab.
+Too much code? Let's set up the authentication in the console next! Go back to your [firebase console](https://console.firebase.google.com) and click on the Authentication tab.
 ![Authentication](imgs/Auth.png)
 
-Then click on Sign-In Method and enable a few. Since Firebase is a Google product, enabling users to sign on via Google doesn't require any other information.  
+Then click on Sign-In Method and enable a few. Since Firebase is a Google product, enabling Google Sign-In doesn't require any additional information.
 
-![Sign-In](imgs/SignInMethod.png)
+![Sign-In](imgs/EnableSignIns.png)
 
+That's it! Now back to our code...
+
+![coding](https://media.giphy.com/media/QHE5gWI0QjqF2/giphy.gif)
 
 ## Prompt for Sign In
 
-Scan through `firebaseApp.js`. In this particular project the start function prompts the widget to ask the user to sign in and passes along user information to a callback function if the sign in is successful. In this project the callback function is `onSignIn` in the `firebaseApp.js` file. It takes the user object firebase returns grabs name, email and profile picture from the user.
-
-```
-onSignIn(user) {
-  if (user) {
-    this.setState({
-      name: user.displayName,
-      email: user.email,
-      photo: user.photoUrl,
-    });
-  }
-}
-```
-Now lets go back to `firebaseui.js` and see how to work with the firebase authentication and ui stuff. The script contains a `start(callback)` function that intends to prompt the user to enter sign in information. The widget requires a number of other config parameters as well.  Since one parameter is a call back method,the config needs to be set up within start(). Adapt and insert the following code under the `start(callback)` function.
+Time to make a widget that prompts the user to sign in! Let's start with `firebaseui.js` that interacts directly with firebase. The widget takes in a number of config parameters that decide (1) what shows up and (2) what happens after a user signs in. Here's a default set of parameters:
 ```
 // FirebaseUI config.
 const uiConfig = {
@@ -403,6 +393,12 @@ const uiConfig = {
   },
 };
 ```
+The `signInOptions` parameter lists what Sign-In options will show up in your widget. You should leave them ones that you enabled in the Firebase Authentication portion of the workshop.
+
+Currently the only `callbacks` firebase-ui-auth supports is `signInSuccess` that requires a function that either returns true or false and provides a `currentUser` parameter. We're going to send `currentUser` to a callback function defined somewhere else. We'll get to that in a sec.
+
+Put all of the config code within `start(callback)` function in `firebaseui.js`.
+
 You can find more information about the configuration parameters [here](https://github.com/firebase/FirebaseUI-Web)
 
 To make the sign-in widget appear place the following line after the configs:
@@ -411,11 +407,38 @@ To make the sign-in widget appear place the following line after the configs:
 // Acts on the <div id="firebaseui-auth-container" /> tag
 ui.start('#firebaseui-auth-container', uiConfig);
 ```
-Now when you call the function `firebaseui.start(callback)` sign-in buttons will appear and prompt the user to sign in.
-Check out the `getUser` function. This retrieves a reference to the user object after a user has been authenticated to retrieve additional information about a user.
+Now when you call the function `firebaseui.start(callback)` the widget will prompt the user to sign in.
 
-Notice how the ui.start method has a `#firebaseui-auth-container`? This indicates that the widget will appear onto something with that id such as: `<div id="firebaseui-auth-container" />`.
-Place this line in `firebaseApp.js` within `renderFirebase()` .
+![YAS](https://media.giphy.com/media/3oEduTrz5oU71UamR2/giphy.gif)
+
+Where do we use `firebaseui.start(callback)`? In this particular project we'll have the `FirebaseApp` show the widget after if finishes rendering. With React we can do this by call it in a `componentDidMount()` function. Put this in your `FirebaseApp` class.
+
+```
+componentDidMount() {
+  firebaseui.start(this.onSignIn);
+}
+```
+
+Were you paying attention? Didn't we need a callback? Yup that's right! Here the callback is `this.onSignIn` which we haven't written yet. The callback will be given `currentUser` which is a `firebase.User` object. Here's some documentation on it: [Click Me](https://firebase.google.com/docs/reference/js/firebase.User).
+
+This is what we came up with for the `onSignIn` callback function:
+
+```
+onSignIn(user) {
+  if (user) {
+    this.setState({
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoUrl,
+    });
+  }
+}
+```
+Don't forget to bind it in the constructor!
+
+Notice how the ui.start method has a `#firebaseui-auth-container`? This means that the widget will appear if something has that id such as: `<div id="firebaseui-auth-container" />`.
+
+Let's make our project a little fancy and only have the login widget appear if the user did not click to sign in or the sign in failed. This is largely handled in `renderFirebase()`, but it's missing the tag for the widget to show up when the user is not signed in. Add the above div tag in the function; see if you can figure out where it goes. 
 
 Running `npm start` should now prompt you with a fun sign-in widget and display some information about the signed in user.
 

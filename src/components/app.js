@@ -12,7 +12,7 @@ class App extends Component {
 
 
   render() {
-    // Add in the FirebaseApp component, FacebookLogin, and GoogleLogin
+    // Add in FacebookLogin, GoogleLogin and FirebaseApp
     return (
       <div id="login">
       </div>

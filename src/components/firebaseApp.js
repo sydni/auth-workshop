@@ -13,9 +13,7 @@ class FirebaseApp extends Component {
     this.onSignIn = this.onSignIn.bind(this);
     this.renderFirebase = this.renderFirebase.bind(this);
   }
-  componentDidMount() {
-    firebaseui.start(this.onSignIn);
-  }
+
   onSignIn(user) {
     if (user) {
       this.setState({
