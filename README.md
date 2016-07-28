@@ -314,7 +314,7 @@ Cool, now that we have our google and facebook logins, let's explore authenticat
 
 For this portion of our workshop we're going to make FirebaseApp that prompts the user to login and then displays their information afterwards. The outline of this component is in `firebaseApp.js`. Like in HW3 we'll work with firebase in a separate file: `firebaseui.js`.
 
-In `app.js` to make the content the FirebaseApp renders appear place the tag `<FirebaseApp />` after the facebook and google tags in the render function.
+In `app.js` to make the content the FirebaseApp renders appear place the tag `<FirebaseApp />` after the facebook and google tags in the render function. And import FirebaseApp at the top :)
 
 ![fire](https://media.giphy.com/media/nrXif9YExO9EI/giphy.gif)
 
